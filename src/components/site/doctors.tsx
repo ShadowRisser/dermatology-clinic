@@ -13,12 +13,13 @@ export function Doctors() {
   const openBooking = useUI((s) => s.openBooking);
 
   useEffect(() => {
-    fetch("/api/doctors")
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.success) setDoctors(d.doctors);
-      })
-      .finally(() => setLoading(false));
+    const data = [
+      {id:"d1",name:"Dr. Elena Marchetti",title:"Medical Director, MD",credentials:"Board-Certified Dermatologist, FAAD",bio:"Dr. Marchetti leads Lumière with eighteen years of clinical excellence and a fellowship in cosmetic dermatology from a leading European institute. Renowned for her subtle, anatomy-led approach to injectables, she has trained physicians internationally and is frequently cited in aesthetic media for her philosophy of \"invisible refinement.\" Patients describe her consults as the most thorough they have ever experienced.",image:"/clinic/doctor-1.png",specialty:"Cosmetic Dermatology",experienceY:18,sortOrder:1},
+      {id:"d2",name:"Dr. James Whitford",title:"Senior Dermatologist, MD PhD",credentials:"Board-Certified, Mohs Surgery",bio:"Dr. Whitford brings twenty-two years of expertise in laser and procedural dermatology, with a doctorate investigating fractional laser tissue interactions. He oversees our laser and surgical dermatology programme, combining rigorous clinical science with an artist's eye for facial harmony.",image:"/clinic/doctor-2.png",specialty:"Laser & Surgical Dermatology",experienceY:22,sortOrder:2},
+      {id:"d3",name:"Sofia Renaud",title:"Lead Aesthetician",credentials:"Licensed Medical Aesthetician, LE",bio:"Sofia has spent twelve years perfecting the artistry of clinical aesthetics, with advanced training in Hydrafacial, chemical peels, microneedling, and bespoke skincare protocols. Her signature facials blend medical efficacy with a deeply restorative sensory experience.",image:"/clinic/doctor-3.png",specialty:"Clinical Aesthetics",experienceY:12,sortOrder:3},
+    ];
+    setDoctors(data as any);
+    setLoading(false);
   }, []);
 
   return (

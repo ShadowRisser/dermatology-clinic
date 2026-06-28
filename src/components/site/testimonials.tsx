@@ -12,12 +12,16 @@ export function Testimonials() {
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
-    fetch("/api/reviews")
-      .then((r) => r.json())
-      .then((d) => {
-        if (d.success && d.reviews?.length) setReviews(d.reviews);
-      })
-      .finally(() => setLoading(false));
+    const data = [
+      {id:"r1",name:"Isabelle Laurent",rating:5,treatment:"Dermal Fillers",text:"I have been to several clinics across Paris and New York, and Lumière is simply in a league of its own. Dr. Marchetti understood exactly the refined result I wanted — refreshed, never \"done.\" Six weeks on, my cheeks look like the best version of myself.",location:"New York, NY",featured:true,createdAt:"1782559668157"},
+      {id:"r2",name:"Marcus Chen",rating:5,treatment:"Laser Resurfacing",text:"Dr. Whitford walked me through every detail of the laser resurfacing process before we began. As someone with acne scarring for over a decade, I was cautious, but the results have genuinely transformed my confidence.",location:"Los Angeles, CA",featured:true,createdAt:"1782559668158"},
+      {id:"r3",name:"Priya Sharma",rating:5,treatment:"Hydrafacial",text:"Sofia's Hydrafacial is the single best facial I have ever had — and I have tried many. My skin glowed for weeks afterward, and she designed a home regimen that has completely changed its texture.",location:"London, UK",featured:true,createdAt:"1782559668159"},
+      {id:"r4",name:"Olivia Hartman",rating:4,treatment:"Botulinum Toxin",text:"A discreet, elegant clinic with a genuinely personalised approach. The treatment itself was quick and comfortable, and the results appeared exactly as promised — soft, natural, and lifted.",location:"Chicago, IL",featured:true,createdAt:"1782559668159"},
+      {id:"r5",name:"Daniel Okafor",rating:5,treatment:"PRP Therapy",text:"I came to Lumière for PRP therapy to address early hair thinning. Eight months in, the difference is remarkable and entirely my own biology at work. Dr. Marchetti is honest, warm, and never once tried to upsell.",location:"Toronto, ON",featured:true,createdAt:"1782559668160"},
+      {id:"r6",name:"Camille Dubois",rating:5,treatment:"Skin Consultation",text:"The consultation alone was worth every cent. For the first time, a physician mapped out my skin concerns with genuine diagnostic precision and gave me a realistic, staged plan rather than pushing treatments.",location:"Montréal, QC",featured:true,createdAt:"1782559668160"},
+    ];
+    setReviews(data as any);
+    setLoading(false);
   }, []);
 
   const next = useCallback(
